@@ -12,7 +12,7 @@ ESP8266WiFiMulti WiFiMulti;
 
 
 /* Set these to your desired credentials. */
-const char *ssid = "Raptor";
+const char *ssid = "MattRaptCam";
 const char *password = "";
 bool pushed = false;
 
@@ -143,7 +143,11 @@ void setup() {
       Serial.println("HTTP server started");
       Serial.println(ESP.getChipId());
   } else {
+      
       Serial.println("Camera Mode");
+
+      Serial.print("Connecting to ");
+      WiFi.begin(configuration.ssid, configuration.pass);
 
       for(uint8_t t = 4; t > 0; t--) {
           Serial.printf("[SETUP] WAIT %d...\n", t);
@@ -154,7 +158,7 @@ void setup() {
       Serial.print("WTF?: ");
       Serial.println(configuration.ssid);
       Serial.println(configuration.pass);
-      Serial.println(WiFiMulti.addAP(configuration.ssid, configuration.pass));
+//      Serial.println(WiFiMulti.addAP(configuration.ssid, configuration.pass));
   }
     
   
